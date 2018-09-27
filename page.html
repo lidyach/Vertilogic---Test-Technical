@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Membuat layout WEB responsive sederhana HTML dan CSS</title>
+	<meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+	 <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 250px;
+		width : 200px;
+		border : 1px solid black;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"/>
+</head>
+<body onload="loadDoc()">
+<div class="header">
+  <h2>My Admin</h2>
+</div>
+
+<div class="row">
+  <div class="content">
+    <div class="card">
+      <div id="name">
+	  </div>
+      
+		<div id="akun-page">
+		<div id='img'>
+			<img src='user.png'/>
+		</div>
+		<div id='nama'></div>
+		<div id='alamat'>
+			<div id="detail-alamat"></div>
+			<div id="map"></div>
+		</div>
+	  </div>     
+    </div>    
+  </div>
+  <div class="sidebar">
+    <div class="widget">
+      <h2>Posts</h2>
+    </div>
+    <div class="widget" style="background: white;">
+      <h2 >Users</h2>
+    </div>
+    <div class="widget">
+      <h2>Settings</h2>
+    </div>
+  </div>
+</div>
+
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+			
+			var data = JSON.parse(this.responseText);
+			var name = "<p>"+data[0].name+"</p>"
+			document.getElementById("name").innerHTML+=name;
+			var nama = "<p style='color: blue;'>"+data[0].username+"</p><p style='color: blue;'><i class='fa fa-envelope'></i>&nbsp; "+data[0].email+"</p><p><i class='fa fa-mobile'></i>&nbsp; "+data[0].phone+"</p><p><i class='fa fa-globe'></i>&nbsp; "+data[0].website+"</p><h2>Company</h2><p>"+data[0].company.name+"</p><p>"+data[0].company.catchPhrase+"</p><p>"+data[0].company.bs+"</p></div>";
+			document.getElementById("nama").innerHTML+=nama;
+			var alamat = "<p><i class='fa  fa-map-marker'></i>&nbsp; "+data[0].address.street+"</p><p>"+data[0].address.suite+"</p><p>"+data[0].address.city+"</p><p>"+data[0].address.zipcode+"</p></div>";
+			document.getElementById("detail-alamat").innerHTML+=alamat;
+		
+	}
+  };
+  xhttp.open("GET", "user.json", true);
+  xhttp.send();
+}
+</script>
+
+<script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -37.3159, lng: 81.1496},
+          zoom: 5
+        });
+      }
+ </script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-2HPNKaXZJjSEmdu5fGUZnM99ny2IhRI&callback=initMap" async defer></script>
+
+
+</body>
+</html>

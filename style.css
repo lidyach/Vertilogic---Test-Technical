@@ -1,0 +1,132 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial;
+    padding: 10px;
+	
+}
+
+.header {
+    padding: 1px;
+    font-size: 10px;
+    text-align: left;
+    background: white;
+}
+
+.content {   
+    float: right;
+    width: 75%;
+	border : 1px solid black;
+}
+
+.sidebar {
+    float: right;
+    width: 25%;
+	margin-top: 5%;  
+    padding-right: 10px;
+}
+
+
+
+#akun{
+    width: 75%;
+    padding: 10px;
+	border : 1px solid black;
+	height:160px;
+}
+
+#akun-page{
+    width: 75%;
+    padding: 10px;
+	border : 1px solid black;
+	height:500px;
+}
+
+
+p {
+    display: block;
+    margin-block-start: 0.1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+#img{ 
+	padding:5px;
+	height:130px;
+	width:20%;
+	margin-right:5px;
+	float:left;
+}
+
+#nama { 
+	padding:5px;
+	height:130px;
+	float:left;
+	width:35%;
+	margin-top:5px;
+}
+
+#alamat{ 
+	padding:5px;
+	float:right;
+	height:130px;
+	width:35%;
+	margin-top:px;
+}
+	
+#img img{
+	height: 130px;
+	width :130x;
+}
+
+.card {
+     background-color: white;
+     padding: 10px;
+}
+
+.card h3{
+     background-color: white;
+     padding: 5px;
+     margin-top: 10px;
+}
+
+.widget{
+	font-size: 10px;
+    background-color: white;
+    padding: 1px;   
+	border : 1px solid black;
+	background-color: #eee;
+}
+
+.widget hover{
+	font-size: 10px;
+    background-color: white;
+    padding: 1px;   
+	border : 1px solid black;
+
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+
+@media (max-width: 800px) {
+    .content, .sidebar,.footer{   
+        width: 100%;
+        padding: 0;
+    }     
+}
+
+@media (max-width: 400px) {
+    .nav a {
+        float: none;
+        width:100%;
+    }
+}

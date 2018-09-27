@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Membuat layout WEB responsive sederhana HTML dan CSS</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"/>
+
+</head>
+<body onload="loadDoc()">
+<div class="header">
+  <h2>My Admin</h2>
+</div>
+
+<div class="row">
+  <div class="content">
+    <div class="card">
+      <h3>All User</h3>
+      
+		<div id="daftar">
+	  </div>     
+    </div>    
+  </div>
+  <div class="sidebar">
+    <div class="widget">
+      <h2>Posts</h2>
+    </div>
+    <div class="widget" style="background: white;">
+      <h2 >Users</h2>
+    </div>
+    <div class="widget">
+      <h2>Settings</h2>
+    </div>
+  </div>
+</div>
+
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+		var data = JSON.parse(this.responseText);
+		for(i=0;i<data.length;i++){
+			
+			var element = "<div id='akun'><div id='img'><img src='user.png'/></div><div id='nama'><p>"+data[i].name+"</p><p style='color: blue;'>"+data[i].username+"</p><p style='color: blue;'><i class='fa fa-envelope'></i>&nbsp; "+data[i].email+"</p><p><i class='fa fa-mobile'></i>&nbsp; "+data[i].phone+"</p></div><div id='alamat'><p><i class='fa  fa-map-marker'></i>&nbsp; "+data[i].address.street+"</p><p>"+data[i].address.suite+"</p><p>"+data[i].address.city+"</p><p>"+data[i].address.zipcode+"</p></div></div>";
+			document.getElementById("daftar").innerHTML+=element;
+		}
+		
+	}
+  };
+  xhttp.open("GET", "user.json", true);
+  xhttp.send();
+}
+</script>
+
+
+
+</body>
+</html>
